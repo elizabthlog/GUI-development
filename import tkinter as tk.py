@@ -6,7 +6,6 @@ root.mainloop()
 root.title("Eliza's Number Guessing Game")
 
 class guess:
-    def_init(tk, root)
-    
+
 
 
