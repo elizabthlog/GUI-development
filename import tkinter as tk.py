@@ -64,7 +64,35 @@ hint = tk.Label(
     bg="#1e1e2f",
     fg="#ffcc00"
 )
+hint.pack(pady = 10)
+
+
+attempts_label = tk.Label(
+    root,
+    text="Attempts: 0",
+    font=("Arial", 14, "bold"),
+    bg="#1e1e2f",
+    fg="#ffffff"
+)
+attempts_label.pack(pady = 5)
 
 
 
+frame = tk.Frame(
+    root,
+    bg = "#1e1e2f"',
+)
+attempts_label.pack(pady = 20)
 
+
+
+def on_enter(e):
+    e.widget["background"] = "#ff66aa"
+
+def on_leave(e):
+    e.widget["background"] = "#ff3399"
+
+
+new_game()
+
+root.mainloop()  
