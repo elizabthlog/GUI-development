@@ -3,9 +3,8 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Eliza's Number Guessing Game")
-root.geometry("500x500")
-root.configure(background="#a4c330")
-root.mainloop()
+root.geometry("500x700")
+root.configure(background="#fca9a9")
 
 attempts = 0
 snumber = 0
@@ -20,7 +19,7 @@ def newgame():
     attempts_label.config(text="Attempts: 0")
 
 
-def guess(number);
+def guess(number):
     global attempts
     attempts += 1
 
@@ -29,7 +28,7 @@ def guess(number);
     if number == snumber:
         message.config(text=f"Correct! It was {snumber}")
         hint.config(text="Starting new game...")
-        root.after(1000, new_game)
+        root.after(1000, newgame)
         
     elif number < snumber:
         hint.config(text="Higher!")
@@ -38,11 +37,11 @@ def guess(number);
 
 
 
-    title = tk.Label(
+title = tk.Label(
         root,
         text = "ELIZA'S GUESSING GAME",
         font = ("Poppins", 22, "bold"),
-        bg="#a4c330",
+        bg="#fca9a9",
         fg = "white"
     )
 title.pack(pady=15)
@@ -51,18 +50,18 @@ title.pack(pady=15)
 message = tk.Label(
     root,
     text = "Guess the number (1-20)",
-    font = ("Poppins", 16, "bold"),
-    bg = "#a4c330",
-    fg ="#00ffcc"
+    font = ("Arial", 16, "bold"),
+    bg = "#fca9a9",
+    fg ="#00f8c6"
 )
-
+message.pack(pady=10)
 
 hint = tk.Label(
     root,
     text = "",
-    font =("Poppins", 14,"bold"),
-    bg="#1e1e2f",
-    fg="#ffcc00"
+    font =("Arial", 14,"bold"),
+    bg="#fca9a9",
+    fg="#ff3300"
 )
 hint.pack(pady = 10)
 
@@ -71,7 +70,7 @@ attempts_label = tk.Label(
     root,
     text="Attempts: 0",
     font=("Arial", 14, "bold"),
-    bg="#1e1e2f",
+    bg="#fca9a9",
     fg="#ffffff"
 )
 attempts_label.pack(pady = 5)
@@ -80,9 +79,9 @@ attempts_label.pack(pady = 5)
 
 frame = tk.Frame(
     root,
-    bg = "#1e1e2f"',
+    bg = "#86b869",
 )
-attempts_label.pack(pady = 20)
+frame.pack(pady = 25)
 
 
 
@@ -90,9 +89,32 @@ def on_enter(e):
     e.widget["background"] = "#ff66aa"
 
 def on_leave(e):
-    e.widget["background"] = "#ff3399"
+    e.widget["background"] = "#ff3891"
 
 
-new_game()
+
+for i in range(1, 21):
+    btn = tk.Button(
+        frame,
+        text=str(i),
+        width=5,
+        height=2,
+        font=("Arial", 12, "bold"),
+        bg="#ff3891",
+        fg="white",
+        activebackground="#fca9a9",
+        relief="raised",
+        bd=4,
+        command=lambda num=i: guess(num)
+    )
+
+    btn.bind("<Enter>", on_enter)
+    btn.bind("<Leave>", on_leave)
+
+    btn.grid(row=(i-1)//5, column=(i-1)%5, padx=6, pady=6)
+
+
+
+newgame()
 
 root.mainloop()  
