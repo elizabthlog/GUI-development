@@ -12,7 +12,7 @@ snumber = 0
 
 def newgame():
     global snumber, attempts
-    snumber  = random.randint(1.20)
+    snumber  = random.randint(1, 20)
     attempts = 0
 
     message.config(text="Guess the number (1-20)")
